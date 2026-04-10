@@ -111,7 +111,7 @@ export default function AndroidScanPage() {
       height: '90vh',
       justifyContent: 'center'
     }}>
-      <h1 style={{ fontSize: '2rem', marginBottom: '10px' }}>Shift Round</h1>
+      <h1 style={{ fontSize: '2rem', marginBottom: '10px' }}>Volta de Turno</h1>
       
       <div style={{ 
         padding: '30px', 
@@ -123,7 +123,7 @@ export default function AndroidScanPage() {
         <p style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{status}</p>
         {lastScanned && (
           <p style={{ color: 'green', marginTop: '10px' }}>
-            Last scan: <strong>{lastScanned}</strong>
+            Última Tag: <strong>{lastScanned}</strong>
           </p>
         )}
       </div>
@@ -146,8 +146,8 @@ export default function AndroidScanPage() {
         </button>
       ) : (
         <div style={{ color: '#666' }}>
-          The app is now listening...<br/>
-          You can walk around and tap tags.
+          A App está em modo pesquisa..<br/>
+          Podes continuar a volta e tocar nas tags!
         </div>
       )}
 
