@@ -26,14 +26,14 @@ export default function Dashboard() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <h1>Manager Dashboard</h1>
-      <h3>Recent Rounds</h3>
+      <h1>Dashboard</h1>
+      <h3>Rondas recentes</h3>
       <table border={1} cellPadding={10} style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ background: '#eee' }}>
-            <th>Time</th>
-            <th>Location</th>
-            <th>Manager</th>
+            <th>Hora</th>
+            <th>Local</th>
+            <th>Gerente</th>
           </tr>
         </thead>
         <tbody>
