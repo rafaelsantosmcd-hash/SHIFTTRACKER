@@ -6,7 +6,7 @@ function App() {
   useEffect(() => {
     // 1. When the page loads, look at the URL
     const queryParams = new URLSearchParams(window.location.search);
-    const locationId = queryParams.get('id'); // looks for "?id=kitchen"
+    const locationId = queryParams.get('loc'); // looks for "?id=kitchen"
 
     if (locationId) {
       handleScan(locationId);
