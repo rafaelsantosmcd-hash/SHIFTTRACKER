@@ -10,7 +10,7 @@ const supabase = createClient(
 )
 
 export default function AndroidScanPage() {
-  const [status, setStatus] = useState<string>('Ready to start')
+  const [status, setStatus] = useState<string>('Pronto para começar')
   const [isScanning, setIsScanning] = useState<boolean>(false)
   const [lastScanned, setLastScanned] = useState<string | null>(null)
 
@@ -57,7 +57,7 @@ export default function AndroidScanPage() {
 
     try {
       setIsScanning(true)
-      setStatus("Scanning... Tap a tag.")
+      setStatus("Pesquisa ativa.. Toca numa tag.")
       
       // @ts-ignore - NDEFReader is new and might not be in all TS types yet
       const ndef = new NDEFReader()
@@ -75,7 +75,7 @@ export default function AndroidScanPage() {
             if (loc) {
               saveCheckin(loc)
             } else {
-              setStatus("❌ Tag detected, but no '?loc=' parameter found.")
+              setStatus("❌ Tag não reconhecida.")
             }
           }
         }
@@ -142,7 +142,7 @@ export default function AndroidScanPage() {
             fontWeight: 'bold'
           }}
         >
-          START SCANNING SESSION
+          Começar Volta.
         </button>
       ) : (
         <div style={{ color: '#666' }}>
@@ -162,7 +162,7 @@ export default function AndroidScanPage() {
           borderRadius: '5px'
         }}
       >
-        View Dashboard
+        Ver Dashboard
       </button>
     </div>
   )
