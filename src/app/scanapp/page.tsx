@@ -14,37 +14,36 @@ export default function AndroidScanPage() {
   const [isScanning, setIsScanning] = useState<boolean>(false)
   const [lastScanned, setLastScanned] = useState<string | null>(null)
 
-  // 1. Logic to handle the Database logging
-  const saveCheckin = async (locationId: string) => {
-    setStatus(`Checking database for: ${locationId}...`)
 
-    // Check if location exists
-    const { data: locData, error: locError } = await supabase
+  const saveCheckin = async (locationId: string) => {
+    // 1. Ir buscar o nome do gerente que guardámos na página inicial
+    const savedManager = localStorage.getItem('manager_name') || 'Gerente Desconhecido';
+
+    // 2. Verificar se a localização existe (mantemos a lógica anterior)
+    const { data: locData } = await supabase
       .from('locations')
       .select('display_name')
       .eq('id', locationId)
       .single()
 
-    if (locError || !locData) {
-      setStatus(`❌ Error: '${locationId}' not found in database.`)
+    if (!locData) {
+      setStatus(`❌ Localização ${locationId} não existe.`)
       return
     }
 
-    // Insert the checkin
+    // 3. Inserir o check-in com o nome do gerente dinâmico
     const { error: checkinError } = await supabase
       .from('checkins')
       .insert([{ 
         location_id: locationId, 
-        manager_name: 'Shift Manager' 
+        manager_name: savedManager // <--- AQUI USAMOS O NOME GUARDADO
       }])
 
     if (checkinError) {
-      setStatus(`❌ Database Error: ${checkinError.message}`)
+      setStatus(`❌ Erro: ${checkinError.message}`)
     } else {
       setLastScanned(locData.display_name)
-      setStatus(`✅ Logged: ${locData.display_name}`)
-      
-      // Optional: Vibrate the phone on success
+      setStatus(`✅ Registado por ${savedManager}`)
       if (navigator.vibrate) navigator.vibrate(200)
     }
   }
@@ -168,4 +167,3 @@ export default function AndroidScanPage() {
     </div>
   )
 }
-
