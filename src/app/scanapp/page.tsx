@@ -19,7 +19,7 @@ export default function AndroidScanPage() {
 
   // 1. Função que apenas deteta a tag e prepara a avaliação
   const prepareRating = async (locationId: string) => {
-    setStatus("TAG detetada! Procure avaliar...")
+    setStatus("TAG detetada! Avaliação:")
     
     const { data: locData } = await supabase
       .from('locations')
@@ -169,12 +169,6 @@ export default function AndroidScanPage() {
           )
         )}
       </div>
-
-      <button 
-        onClick={() => window.location.href = '/dashboard'}
-        style={{ marginTop: '40px', padding: '10px', fontSize: '1rem', background: 'none', border: '1px solid #ccc', borderRadius: '5px' }}>
-        Ver Dashboard
-      </button>
     </div>
   )
 }
