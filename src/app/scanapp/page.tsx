@@ -19,7 +19,7 @@ export default function AndroidScanPage() {
 
   // 1. Função que apenas deteta a tag e prepara a avaliação
   const prepareRating = async (locationId: string) => {
-    setStatus("TAG detetada! Avaliação:")
+    setStatus("TAG detetada!")
     
     const { data: locData } = await supabase
       .from('locations')
