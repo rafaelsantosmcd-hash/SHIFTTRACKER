@@ -15,7 +15,11 @@ export default function LoginPage() {
   useEffect(() => {
     // 1. Ir buscar a lista de gerentes à base de dados
     async function fetchGerentes() {
-      const { data } = await supabase.from('gerentes').select('*').order('nome')
+      const { data } = await supabase
+      .from('gerentes')
+      .select('*')
+      .eq('restaurante_id', process.env.NEXT_PUBLIC_RESTAURANT_ID)
+      .order('nome')
       if (data) setGerentes(data)
     }
     fetchGerentes()

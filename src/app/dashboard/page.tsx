@@ -36,6 +36,7 @@ export default function Dashboard() {
     const { data: rawData, error } = await supabase
       .from('checkins')
       .select('*')
+      .eq('restaurante_id', process.env.NEXT_PUBLIC_RESTAURANT_ID)
       .order('created_at', { ascending: false }); 
 
     if (error) return;

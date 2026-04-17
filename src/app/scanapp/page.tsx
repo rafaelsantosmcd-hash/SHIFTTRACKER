@@ -50,7 +50,8 @@ export default function AndroidScanPage() {
       .insert([{ 
         location_id: pendingLocation.id, 
         manager_name: savedManager,
-        rating: rating // Grava a cor selecionada
+        rating: rating,
+        restaurante_id: process.env.NEXT_PUBLIC_RESTAURANT_ID 
       }])
 
     setIsSaving(false)
